@@ -29,6 +29,7 @@ const palabras_reservadas = [
   'RETURN',
   'PAUSE',
 ];
+let flg = 0
 const simb = ['(', ')', '{', '}', '[', ']', '"', ',', ";"]
 const operadores_relacionales = ['>', '<', '=', '!']
 const operadores = ['+', '*', '/', '-', '%']
@@ -363,7 +364,7 @@ const Program = () => {
       coincidir("ID")
       Funcs()
       break;
-      break; default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+      break; default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const TypeId = () => {
@@ -384,7 +385,7 @@ const TypeId = () => {
       TypeSpec()
       coincidir("ID")
       break;
-      break; default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+      break; default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const Decl = () => {
@@ -396,7 +397,7 @@ const Decl = () => {
       Funcs()
       break;
 
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const TypeSpec = () => {
@@ -413,7 +414,7 @@ const TypeSpec = () => {
     case "FLOAT":
       coincidir("FLOAT")
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const Vars = () => {
@@ -425,7 +426,7 @@ const Vars = () => {
       coincidir(";")
       Decl2()
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const ArrayDecl = () => {
@@ -464,7 +465,7 @@ const VarNames = () => {
       VarDeclInit()
       DecList()
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const Decl2 = () => {
@@ -493,7 +494,7 @@ const Decl2 = () => {
       VarDeclInit()
       DecList()
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const Funcs = () => {
@@ -505,7 +506,7 @@ const Funcs = () => {
       Stmt()
       FunDecListPrima()
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const FunDecListPrima = () => {
@@ -571,7 +572,7 @@ const FunDecList = () => {
       coincidir(")")
       FuncStmt()
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const Params = () => {
@@ -602,7 +603,7 @@ const ParamsPrima = () => {
       Param()
       ParamsPrima()
       break;
-    case "$": break; default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    case "$": break; default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const Param = () => {
@@ -623,7 +624,7 @@ const Param = () => {
       TypeSpec()
       coincidir("ID")
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const FuncStmt = () => {
@@ -633,7 +634,7 @@ const FuncStmt = () => {
       ReturnStmt()
       coincidir("}")
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const ReturnStmt = () => {
@@ -735,7 +736,7 @@ const Stmt = () => {
     case "FOR":
       ForStmt()
       break;
-      break; default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+      break; default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const ExprStmt = () => {
@@ -776,7 +777,7 @@ const ExprStmt = () => {
       Expresion()
       coincidir(";")
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const Expresion = () => {
@@ -808,7 +809,7 @@ const Expresion = () => {
     case "(":
       Assignement()
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const Assignement = () => {
@@ -842,7 +843,7 @@ const Assignement = () => {
     case "(":
       LogicOr()
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const LogicOr = () => {
@@ -883,7 +884,7 @@ const LogicOr = () => {
       LogicAnd()
       LogicOrPrima()
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const LogicOrPrima = () => {
@@ -929,7 +930,7 @@ const LogicAnd = () => {
       Equality()
       LogicAndPrima()
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const LogicAndPrima = () => {
@@ -975,7 +976,7 @@ const Equality = () => {
       Comparison()
       EqualityPrima()
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const EqualityPrima = () => {
@@ -1003,7 +1004,7 @@ const CompOper = () => {
       coincidir("=")
       coincidir("=")
       break;
-      break; default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+      break; default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const Comparison = () => {
@@ -1040,7 +1041,7 @@ const Comparison = () => {
       Term()
       ComparisonPrima()
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const ComparisonPrima = () => {
@@ -1082,7 +1083,7 @@ const LogicOperator = () => {
     case "<=":
       coincidir("<=")
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const Term = () => {
@@ -1119,7 +1120,7 @@ const Term = () => {
       Factor()
       TermPrima()
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const TermPrima = () => {
@@ -1171,7 +1172,7 @@ const Factor = () => {
       Unary()
       FactorPrima()
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const FactorPrima = () => {
@@ -1216,7 +1217,7 @@ const Unary = () => {
     case "(":
       Call()
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const UnaryOp = () => {
@@ -1227,7 +1228,7 @@ const UnaryOp = () => {
     case "-":
       coincidir("-")
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const Call = () => {
@@ -1256,7 +1257,7 @@ const Call = () => {
       Primary()
       CallFunc()
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const CallFunc = () => {
@@ -1291,7 +1292,7 @@ const Primary = () => {
       Expresion()
       coincidir(")")
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const IfStmt = () => {
@@ -1306,7 +1307,7 @@ const IfStmt = () => {
       coincidir("}")
       ElseStmt()
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const ElseStmt = () => {
@@ -1330,7 +1331,7 @@ const WhileStmt = () => {
       Stmts()
       coincidir("}")
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const ForStmt = () => {
@@ -1348,7 +1349,7 @@ const ForStmt = () => {
       Stmts()
       coincidir("}")
       break;
-    default: console.log("Hubo un error en la gramatica con : ", preanalisis); break;
+    default: console.log("Hubo un error en la gramatica con : ", preanalisis); flg = 1 ;  break;
   }
 }
 const ForExpr = () => {
@@ -1424,4 +1425,6 @@ const coincidir = (t) => {
 funcionesPrimero()
 preanalisis = sigToken()[1]
 Program()
-console.log("Programa sin errores")
+if (!flg)
+  console.log("Programa sin errores")
+else console.log("Programa con errores")
